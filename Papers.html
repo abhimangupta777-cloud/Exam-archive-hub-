@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Exam Archive Hub - Previous year question papers">
+
+    <title>Question Papers | Exam Archive Hub</title>
+
+    <link rel="stylesheet" href="Style.css">
+
+    <style>
+
+        /* =========================
+           PAGE
+        ========================= */
+
+        .papers-page {
+            max-width: 1150px;
+            margin: auto;
+            padding: 45px 20px 80px;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .papers-hero {
+            text-align: center;
+            padding: 25px 0 35px;
+        }
+
+        .papers-hero h1 {
+            margin: 12px 0 10px;
+
+            font-size: 40px;
+            line-height: 1.1;
+
+            letter-spacing: -1px;
+        }
+
+        .papers-hero p {
+            margin: 0;
+
+            color: #858a96;
+
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           FILTER BOX
+        ========================= */
+
+        .filter-box {
+            background: white;
+
+            border: 1px solid #e5e6ec;
+            border-radius: 20px;
+
+            padding: 22px;
+
+            box-shadow:
+                0 10px 35px
+                rgba(20,25,50,.05);
+
+            margin-bottom: 38px;
+        }
+
+        .filter-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 10px;
+        }
+
+        .filter-grid select {
+            width: 100%;
+
+            padding: 13px;
+
+            background: white;
+
+            border:
+                1px solid #dedfe7;
+
+            border-radius: 9px;
+
+            color: #30343b;
+
+            font-size: 11px;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .search-row {
+            display: flex;
+
+            gap: 9px;
+
+            margin-top: 11px;
+        }
+
+        .search-row input {
+            flex: 1;
+
+            min-width: 0;
+
+            padding: 14px;
+
+            border:
+                1px solid #dedfe7;
+
+            border-radius: 9px;
+
+            font-size: 11px;
+        }
+
+        .search-btn {
+            border: none;
+
+            padding:
+                0 24px;
+
+            border-radius: 9px;
+
+            background: #5b4bff;
+
+            color: white;
+
+            font-size: 11px;
+
+            font-weight: 800;
+        }
+
+        .search-btn:hover {
+            opacity: .9;
+        }
+
+
+        /* =========================
+           CLEAR FILTERS
+        ========================= */
+
+        .filter-bottom {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-top: 12px;
+        }
+
+        .filter-status {
+            color: #858a96;
+
+            font-size: 9px;
+        }
+
+        .clear-btn {
+            border: none;
+
+            background: transparent;
+
+            color: #5b4bff;
+
+            font-size: 10px;
+
+            font-weight: 800;
+        }
+
+
+        /* =========================
+           RESULTS
+        ========================= */
+
+        .results-header {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 17px;
+        }
+
+        .results-header h2 {
+            margin: 0;
+
+            font-size: 22px;
+        }
+
+        .paper-count {
+            color: #858a96;
+
+            font-size: 10px;
+        }
+
+
+        /* =========================
+           PAPER CARD
+        ========================= */
+
+        .paper-card {
+            background: white;
+
+            border:
+                1px solid #e5e6ec;
+
+            border-radius: 15px;
+
+            padding: 17px;
+
+            margin-bottom: 11px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            transition:
+                transform .2s,
+                box-shadow .2s;
+        }
+
+        .paper-card:hover {
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 10px 30px
+                rgba(20,25,50,.07);
+        }
+
+        .paper-info {
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            min-width: 0;
+        }
+
+        .pdf-icon {
+            width: 52px;
+            height: 52px;
+
+            flex-shrink: 0;
+
+            border-radius: 13px;
+
+            background: #f0efff;
+
+            color: #5b4bff;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 10px;
+
+            font-weight: 900;
+        }
+
+        .paper-info h3 {
+            margin: 0 0 5px;
+
+            font-size: 13px;
+
+            color: #202431;
+        }
+
+        .paper-info p {
+            margin: 0;
+
+            color: #858a96;
+
+            font-size: 9px;
+        }
+
+
+        /* =========================
+           PAPER ACTIONS
+        ========================= */
+
+        .paper-actions {
+            display: flex;
+
+            gap: 7px;
+
+            flex-shrink: 0;
+        }
+
+        .preview-btn,
+        .download-btn {
+            border: none;
+
+            padding:
+                10px 13px;
+
+            border-radius: 8px;
+
+            font-size: 9px;
+
+            font-weight: 800;
+        }
+
+        .preview-btn {
+            background: #f0efff;
+
+            color: #5b4bff;
+        }
+
+        .download-btn {
+            background: #5b4bff;
+
+            color: white;
+        }
+
+        .preview-btn:hover,
+        .download-btn:hover {
+            opacity: .85;
+        }
+
+
+        /* =========================
+           NO RESULTS
+        ========================= */
+
+        .no-results {
+            display: none;
+
+            background: white;
+
+            border:
+                1px solid #e5e6ec;
+
+            border-radius: 16px;
+
+            padding: 50px 20px;
+
+            text-align: center;
+        }
+
+        .no-results-icon {
+            font-size: 35px;
+
+            margin-bottom: 10px;
+        }
+
+        .no-results h3 {
+            margin: 0 0 7px;
+
+            font-size: 17px;
+        }
+
+        .no-results p {
+            margin: 0;
+
+            color: #858a96;
+
+            font-size: 10px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media(max-width: 800px) {
+
+            .filter-grid {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .paper-card {
+                align-items: flex-start;
+           

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Exam Archive Hub question paper viewer">
+
+    <title>Question Paper | Exam Archive Hub</title>
+
+    <link rel="stylesheet" href="Style.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fafaff;
+            margin: 0;
+        }
+
+        /* =========================
+           PAGE
+        ========================= */
+
+        .paper-page {
+            max-width: 1150px;
+            margin: auto;
+            padding: 35px 20px 80px;
+        }
+
+        /* =========================
+           BREADCRUMB
+        ========================= */
+
+        .breadcrumb {
+            color: #858a96;
+            font-size: 11px;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb a {
+            color: #5b4bff;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .paper-header {
+            background: white;
+            border: 1px solid #e5e6ec;
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 22px;
+            box-shadow: 0 8px 30px rgba(20,25,50,.04);
+        }
+
+        .paper-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 25px;
+        }
+
+        .paper-title-area {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .big-pdf-icon {
+            width: 64px;
+            height: 64px;
+            flex-shrink: 0;
+
+            border-radius: 15px;
+
+            background: #f0efff;
+            color: #5b4bff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 14px;
+            font-weight: 900;
+        }
+
+        .paper-title-area h1 {
+            margin: 0 0 7px;
+            font-size: 27px;
+            line-height: 1.2;
+            color: #171a25;
+        }
+
+        .paper-title-area p {
+            margin: 0;
+            color: #858a96;
+            font-size: 11px;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .paper-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .paper-buttons button {
+            border: none;
+            padding: 11px 15px;
+            border-radius: 9px;
+
+            font-size: 10px;
+            font-weight: 800;
+
+            cursor: pointer;
+        }
+
+        .bookmark-btn {
+            background: #f0efff;
+            color: #5b4bff;
+        }
+
+        .download-main-btn {
+            background: #5b4bff;
+            color: white;
+        }
+
+        .paper-buttons button:hover {
+            opacity: .85;
+        }
+
+        /* =========================
+           DETAILS
+        ========================= */
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+
+            margin-top: 27px;
+            padding-top: 22px;
+
+            border-top: 1px solid #eeeeF3;
+        }
+
+        .detail {
+            background: #f8f8fb;
+            padding: 14px;
+            border-radius: 10px;
+        }
+
+        .detail span {
+            display: block;
+
+            color: #8b909b;
+            font-size: 8px;
+            font-weight: 700;
+
+            margin-bottom: 5px;
+        }
+
+        .detail strong {
+            font-size: 11px;
+            color: #252936;
+        }
+
+        /* =========================
+           VIEWER
+        ========================= */
+
+        .viewer-section {
+            background: #f1f1f6;
+            border: 1px solid #e3e3e9;
+            border-radius: 18px;
+            padding: 18px;
+        }
+
+        .viewer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 15px;
+        }
+
+        .viewer-header h2 {
+            margin: 0;
+            font-size: 17px;
+        }
+
+        .viewer-header span {
+            color: #858a96;
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        /* =========================
+           PDF VIEWER
+        ========================= */
+
+        .pdf-viewer {
+            background: white;
+            min-height: 650px;
+
+            border-radius: 10px;
+            overflow: hidden;
+
+            box-shadow:
+                0 8px 30px rgba(20,25,50,.08);
+        }
+
+        .pdf-topbar {
+            height: 48px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 15px;
+
+            background: #242632;
+            color: white;
+        }
+
+        .pdf-topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pdf-small-icon {
+            width: 27px;
+            height: 27px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 6px;
+
+            background: #5b4bff;
+
+            font-size: 8px;
+            font-weight: 900;
+        }
+
+        .pdf-file-name {
+            font-size: 10px;
+        }
+
+        .pdf-page-number {
+            color: #c8cad2;
+            font-size: 9px;
+        }
+
+        .pdf-content {
+            min-height: 602px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 30px;
+        }
+
+        .pdf-large-icon {
+            width: 80px;
+            height: 80px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 20px;
+
+            background: #f0efff;
+            color: #5b4bff;
+
+            font-size: 20px;
+            font-weight: 900;
+
+            margin-bottom: 20px;
+        }
+
+        .pdf-content h3 {
+            margin: 0 0 8px;
+            font-size: 20px;
+        }
+
+        .pdf-content p {
+            max-width: 430px;
+
+            margin: 0;
+
+            color: #858a96;
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+        .connect-note {
+            margin-top: 20px;
+
+            padding: 11px 16px;
+
+            border-radius: 9px;
+
+            background: #f0efff;
+            color: #5b4bff;
+
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        /* =========================
+           RESOURCES
+        ========================= */
+
+        .resource-section {
+            margin-top: 40px;
+        }
+
+        .resource-section h2 {
+            margin: 0 0 17px;
+            font-size: 23px;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .resource-card {
+            background: white;
+
+            border: 1px solid #e5e6ec;
+            border-radius: 15px;
+
+            padding: 20px;
+        }
+
+        .resource-card .icon {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .resource-card h3 {
+            margin: 0 0 6px;
+            font-size: 14px;
+        }
+
+        .resource-card p {
+            color: #858a96;
+            font-size: 10px;
+            line-height: 1.6;
+
+            margin: 0 0 15px;
+        }
+
+        .resource-card button {
+            border: none;
+
+            background: #f0efff;
+            color: #5b4bff;
+
+            padding: 9px 12px;
+
+            border-radius: 7px;
+
+            font-size: 9px;
+            font-weight: 800;
+
+            cursor: pointer;
+        }
+
+        /* =========================
+           RELATED PAPERS
+        ========================= */
+
+        .related-section {
+            margin-top: 45px;
+        }
+
+        .related-section h2 {
+            margin: 0 0 17px;
+            font-size: 23px;
+        }
+
+        .related-card {
+            background: white;
+
+            border: 1px solid #e5e6ec;
+            border-radius: 13px;
+
+            padding: 17px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 10px;
+        }
+
+        .related-card strong {
+            display: block;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .related-card span {
+            color: #858a96;
+            font-size: 9px;
+        }
+
+        .related-card button {
+            border: none;

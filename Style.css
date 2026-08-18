@@ -1,0 +1,479 @@
+/* =========================================================
+   EXAM ARCHIVE HUB
+   GLOBAL STYLE SHEET
+   ========================================================= */
+
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: #171a25;
+    background: #fafaff;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    width: 100%;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border-bottom:
+        1px solid #ececf2;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+
+    backdrop-filter: blur(12px);
+}
+
+
+.nav-container {
+    max-width: 1200px;
+
+    min-height: 72px;
+
+    margin: auto;
+
+    padding:
+        0 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    text-decoration: none;
+
+    color: #171a25;
+
+    flex-shrink: 0;
+}
+
+
+.logo-icon {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 13px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #654cff,
+            #7b5cff
+        );
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    box-shadow:
+        0 8px 25px
+        rgba(91, 75, 255, .25);
+}
+
+
+.logo-name {
+    display: block;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    line-height: 1.1;
+}
+
+
+.logo-sub {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #5b4bff;
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================
+   NAVIGATION LINKS
+========================= */
+
+.nav-links {
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+}
+
+
+.nav-links a {
+    position: relative;
+
+    text-decoration: none;
+
+    color: #606572;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    transition:
+        color .2s ease;
+}
+
+
+.nav-links a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -8px;
+
+    width: 0;
+    height: 2px;
+
+    background: #5b4bff;
+
+    border-radius: 5px;
+
+    transition:
+        width .2s ease;
+}
+
+
+.nav-links a:hover {
+    color: #5b4bff;
+}
+
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+.nav-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.login-btn {
+    border:
+        1px solid #dedfe7;
+
+    background: white;
+
+    color: #20232d;
+
+    padding:
+        11px 18px;
+
+    border-radius: 9px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    transition: .2s;
+}
+
+
+.login-btn:hover {
+    color: #5b4bff;
+
+    border-color: #5b4bff;
+
+    background: #f9f8ff;
+}
+
+
+/* =========================
+   COMMON BUTTON
+========================= */
+
+.primary-btn {
+    border: none;
+
+    background: #5b4bff;
+
+    color: white;
+
+    padding:
+        12px 18px;
+
+    border-radius: 9px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    transition:
+        transform .2s,
+        opacity .2s;
+}
+
+
+.primary-btn:hover {
+    transform: translateY(-1px);
+
+    opacity: .9;
+}
+
+
+.secondary-btn {
+    border: none;
+
+    background: #f0efff;
+
+    color: #5b4bff;
+
+    padding:
+        12px 18px;
+
+    border-radius: 9px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+}
+
+
+/* =========================
+   COMMON CONTAINER
+========================= */
+
+.container {
+    width: 100%;
+
+    max-width: 1150px;
+
+    margin: auto;
+
+    padding:
+        0 20px;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.card {
+    background: white;
+
+    border:
+        1px solid #e5e6ec;
+
+    border-radius: 16px;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.card:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(20, 25, 50, .07);
+}
+
+
+/* =========================
+   SECTION LABEL
+========================= */
+
+.section-label {
+    color: #5b4bff;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   SECTION HEADING
+========================= */
+
+.section-heading {
+    margin-bottom: 22px;
+}
+
+
+.section-heading h2 {
+    margin: 0;
+
+    color: #171a25;
+
+    font-size: 27px;
+}
+
+
+.section-heading p {
+    margin:
+        6px 0 0;
+
+    color: #858a96;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   FORMS
+========================= */
+
+input,
+select,
+textarea {
+    outline: none;
+
+    transition:
+        border-color .2s,
+        box-shadow .2s;
+}
+
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #5b4bff !important;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(91, 75, 255, .08);
+}
+
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: #f2f2f6;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #c7c5d8;
+
+    border-radius: 20px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5b4bff;
+}
+
+
+/* =========================
+   SELECTION
+========================= */
+
+::selection {
+    background: #5b4bff;
+
+    color: white;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    width: 100%;
+}
+
+
+/* =========================
+   UT
